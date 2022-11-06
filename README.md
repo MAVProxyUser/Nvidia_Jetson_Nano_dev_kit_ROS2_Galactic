@@ -51,6 +51,22 @@ ubuntu@ubuntu:~$ sudo apt-get update; sudo apt upgrade -y
 ubuntu@ubuntu:~$ sudo apt autoremove -y
 ubuntu@ubuntu:~$ sudo apt-get purge $(dpkg -l | grep '^rc' | awk '{print $2}') -y
 
+Compile libraries for the Intel Realsense: 
+
+ubuntu@ubuntu:~$ git clone https://github.com/IntelRealSense/librealsense.git 
+ubuntu@ubuntu:~$ cd librealsense/
+ubuntu@ubuntu:~/librealsense$ ./scripts/patch-realsense-ubuntu-L4T.sh  
+ubuntu@ubuntu:~/librealsense$ mkdir build
+ubuntu@ubuntu:~/librealsense$ cd build/
+ubuntu@ubuntu:~/librealsense/build$ cmake .. -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=release -DFORCE_RSUSB_BACKEND=false -DBUILD_WITH_CUDA=false && make -j$(($(nproc)-1)) && sudo make install
+ubuntu@ubuntu:~/librealsense/build$ make -j4 
+ubuntu@ubuntu:~/librealsense/build$ sudo make install 
+
+ubuntu@ubuntu:~/librealsense$ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+ubuntu@ubuntu:~/librealsense$ sudo udevadm control --reload-rules && udevadm trigger
+ubuntu@ubuntu:~/librealsense/build$ rs-enumerate-devices 
+
+
 Install a bunch of stuff for compiling ROS2:
 
 ubuntu@ubuntu:~$ sudo apt-get install bison libzmq3-dev  libzmqpp-dev libczmq-dev  
@@ -144,23 +160,6 @@ tracetools_read tracetools_trace
 
 ubuntu@ubuntu:~/ros_src$ colcon list | wc -l
 288
-
-Compile libraries for the Intel Realsense: 
-
-ubuntu@ubuntu:~$ git clone https://github.com/IntelRealSense/librealsense.git 
-ubuntu@ubuntu:~$ cd librealsense/
-ubuntu@ubuntu:~/librealsense$ ./scripts/patch-realsense-ubuntu-L4T.sh  
-ubuntu@ubuntu:~/librealsense$ mkdir build
-ubuntu@ubuntu:~/librealsense$ cd build/
-ubuntu@ubuntu:~/librealsense/build$ cmake ../ -DFORCE_LIBUVC=true -DCMAKE_BUILD_TYPE=release
-ubuntu@ubuntu:~/librealsense/build$ cmake .. -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=release -DFORCE_RSUSB_BACKEND=false -DBUILD_WITH_CUDA=false && make -j$(($(nproc)-1)) && sudo make install
-ubuntu@ubuntu:~/librealsense/build$ make -j4 
-ubuntu@ubuntu:~/librealsense/build$ sudo make install 
-
-ubuntu@ubuntu:~/librealsense$ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
-ubuntu@ubuntu:~/librealsense$ sudo udevadm control --reload-rules && udevadm trigger
-
-ubuntu@ubuntu:~/librealsense/build$ rs-enumerate-devices 
 
 Install ROS realsense 
 ubuntu@ubuntu:~$ cd ~/ros_src/src/
