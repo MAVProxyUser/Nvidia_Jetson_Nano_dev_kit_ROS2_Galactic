@@ -156,19 +156,12 @@ Summary: 288 packages finished [3h 40min 24s]
 ubuntu@ubuntu:~/ros_src$ colcon list | wc -l
 288
 
-Install ROS realsense 
+Install ROS realsense & RPLidar
 ubuntu@ubuntu:~$ cd ~/ros_src/src/
 ubuntu@ubuntu:~/ros_src/src$ git clone  https://github.com/IntelRealSense/realsense-ros.git
 ubuntu@ubuntu:~/ros_src/src$ git clone https://github.com/ros-perception/vision_opencv.git -b 2.2.1
-ubuntu@ubuntu:~/ros_src/src$ git clone https://github.com/ros-perception/image_common.git -b galactic
 ubuntu@ubuntu:~/ros_src/src$ git clone https://github.com/ros/diagnostics.git -b galactic 
-ubuntu@ubuntu:~/ros_src/src$ cd ../
-ubuntu@ubuntup:~/ros_src$ colcon build --parallel-workers 20 --event-handlers console_direct+ --packages-skip-build-finished
-
-Install RPLidar:
-
-ubuntu@ubuntu:~$ cd ~/ros_src/src/
-v:~/ros_src/src$ git clone https://github.com/Slamtec/rplidar_ros.git -b ros2
+ubuntu@ubuntu:~/ros_src/src$ git clone https://github.com/Slamtec/rplidar_ros.git -b ros2
 ubuntu@ubuntu:~/ros_src/src$ cd ../
 ubuntu@ubuntu:~/ros_src/src$ colcon build --parallel-workers 20 --event-handlers console_direct+ --packages-skip-build-finished
 
