@@ -148,15 +148,10 @@ ubuntu@ubuntu:~/ros_src$ export OPENBLAS_CORETYPE=ARMV8
 ubuntu@ubuntu:~/ros_src$ colcon build --parallel-workers 20 --event-handlers console_direct+
 ...
 
-When compile is complete is should have compiled 239 packages, ignore the stderr output. 
+When compile is complete is should have compiled 288 packages, ignore the stderr output. 
 
-Summary: 239 packages finished [1h 35min 41s]
-  59 packages had stderr output: ament_clang_format ament_clang_tidy ament_copyright ament_cppcheck ament_cpplint ament_flake8 ament_index_python ament_lint 
-ament_lint_cmake ament_mypy ament_package ament_pclint ament_pep257 ament_pycodestyle ament_pyflakes ament_uncrustify ament_xmllint domain_coordinator 
-examples_tf2_py foonathan_memory_vendor iceoryx_posh launch launch_ros launch_testing launch_testing_ros launch_xml launch_yaml mimick_vendor osrf_pycommon 
-rcl_lifecycle rcutils ros2action ros2bag ros2cli ros2component ros2doctor ros2interface ros2launch ros2lifecycle ros2multicast ros2node ros2param ros2pkg ros2run 
-ros2service ros2test ros2topic ros2trace rosidl_cli rosidl_runtime_py rpyutils sensor_msgs_py sros2 test_launch_ros tf2_ros_py tf2_tools tracetools_launch 
-tracetools_read tracetools_trace
+Summary: 288 packages finished [3h 40min 24s]
+  79 packages had stderr output: ament_clang_format ament_clang_tidy ament_copyright ament_cppcheck ament_cpplint ament_flake8 ament_index_python ament_lint ament_lint_cmake ament_mypy ament_package ament_pclint ament_pep257 ament_pycodestyle ament_pyflakes ament_uncrustify ament_xmllint domain_coordinator examples_tf2_py foonathan_memory_vendor google_benchmark_vendor iceoryx_posh launch launch_ros launch_testing launch_testing_ros launch_xml launch_yaml mimick_vendor osrf_pycommon rcl_lifecycle rcutils ros2action ros2bag ros2cli ros2component ros2doctor ros2interface ros2launch ros2lifecycle ros2multicast ros2node ros2param ros2pkg ros2run ros2service ros2test ros2topic ros2trace rosidl_cli rosidl_runtime_py rpyutils rqt rqt_action rqt_bag rqt_bag_plugins rqt_console rqt_graph rqt_gui rqt_gui_py rqt_msg rqt_plot rqt_publisher rqt_py_console rqt_reconfigure rqt_service_caller rqt_shell rqt_srv rqt_top rqt_topic sensor_msgs_py sros2 test_launch_ros tf2_ros_py tf2_tools tracetools_launch tracetools_read tracetools_trace uncrustify_vendor
 
 ubuntu@ubuntu:~/ros_src$ colcon list | wc -l
 288
