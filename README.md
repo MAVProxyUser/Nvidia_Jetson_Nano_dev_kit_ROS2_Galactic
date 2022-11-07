@@ -59,9 +59,7 @@ ubuntu@ubuntu:~/librealsense$ ./scripts/patch-realsense-ubuntu-L4T.sh
 ubuntu@ubuntu:~/librealsense$ mkdir build
 ubuntu@ubuntu:~/librealsense$ cd build/
 ubuntu@ubuntu:~/librealsense/build$ cmake .. -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=release -DFORCE_RSUSB_BACKEND=false -DBUILD_WITH_CUDA=false && make -j$(($(nproc)-1)) && sudo make install
-ubuntu@ubuntu:~/librealsense/build$ make -j4 
-ubuntu@ubuntu:~/librealsense/build$ sudo make install 
-
+ubuntu@ubuntu:~/librealsense/build$ cd ..
 ubuntu@ubuntu:~/librealsense$ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
 ubuntu@ubuntu:~/librealsense$ sudo udevadm control --reload-rules && udevadm trigger
 ubuntu@ubuntu:~/librealsense/build$ rs-enumerate-devices 
@@ -167,4 +165,15 @@ ubuntu@ubuntu:~/ros_src/src$ colcon build --parallel-workers 20 --event-handlers
 
 Source the ros2 install!
 ubuntu@ubuntu:~/ros_src$ . install/local_setup.bash
+
+Lauch realsense cam:
+ubuntu@ubuntu:~/ros_src$ realsense-viewer
+ubuntu@ubuntu:~/ros_src$ ros2 launch realsense2_camera rs_launch.py
+
+Launch RPLidar s1:
+ubuntu@ubuntu:~/ros_src$ sudo chmod 777 /dev/ttyUSB0 
+ubuntu@ubuntu:~/ros_src$ ros2 launch rplidar_ros2 rplidar_s1_launch.py
+
+Launch RPLidar s1 with rviz2:
+ubuntu@ubuntu:~/ros_src$ ros2 launch rplidar_ros2 view_rplidar_s1_launch.py
 ```
