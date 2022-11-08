@@ -84,7 +84,7 @@ libusb-1.0-0-dev libopenni-dev libopenni2-dev clang-format libqhull-dev  libpng-
 libxslt1-dev libxml2-dev nano libxrandr-dev libxinerama-dev libxcursor-dev 
 git cmake libssl-dev freeglut3-dev libusb-1.0-0-dev pkg-config libgtk-3-dev libxaw7-dev python3-pyqt5 
 sip-dev pyqt5-dev python3-sip python3-sip-dev pyqt5-dev-tools libglfw3 graphicsmagick-libmagick-dev-compat swig 
-pybind11-dev ruby libtinyxml-dev libqwt-dev -y
+pybind11-dev ruby libtinyxml-dev libqwt-dev libsimbody-dev libyaml-dev libjsoncpp-dev libzip-dev libceres-dev y-y
 
 ubuntu@ubuntu:~$  pip3 install Cython
 ubuntu@ubuntu:~$  pip3 install vcstool argcomplete flake8 flake8-blind-except   
@@ -166,22 +166,24 @@ ubuntu@ubuntu:~/ros_src/$ colcon build --parallel-workers 20 --event-handlers co
 
 Install nav2 & slamtoolbox
 
-#ubuntu@ubuntu-desktop:~/ros_src/src$  git clone https://github.com/ros-planning/navigation2.git nav2 -b galactic
+ubuntu@ubuntu-desktop:~/ros_src/src$  git clone https://github.com/ros-planning/navigation2.git nav2 -b galactic
+ubuntu@ubuntu-desktop:~/ros_src/src$  rm -rf ./src/nav2/nav2_system_tests
+
 ubuntu@ubuntu-desktop:~/ros_src/src$  git clone https://github.com/SteveMacenski/slam_toolbox.git -b galactic
 #ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ros/bond_core.git -b galactic 
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/BehaviorTree/BehaviorTree.CPP.git  -b v3.8
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ros/angles.git
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ompl/ompl.git
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/BehaviorTree/BehaviorTree.CPP.git  -b v3.8
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ros/angles.git
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ompl/ompl.git
 
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gazebo-classic.git
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/sdformat.git -b sdf9
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-tools.git -b ign-tools1
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-cmake.git -b ign-cmake2
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-math.git -b ign-math6
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ignitionrobotics/ign-transport -b ign-transport8
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-msgs.git -b ign-msgs5
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-common.git -b ign-common3
-ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-fuel-tools.git -b ign-fuel-tools4
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gazebo-classic.git
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/sdformat.git -b sdf9
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-tools.git -b ign-tools1
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-cmake.git -b ign-cmake2
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-math.git -b ign-math6
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ignitionrobotics/ign-transport -b ign-transport8
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-msgs.git -b ign-msgs5
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-common.git -b ign-common3
+#ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/gazebosim/gz-fuel-tools.git -b ign-fuel-tools4
 
 
 Source the ros2 install!
