@@ -167,7 +167,13 @@ ubuntu@ubuntu:~/ros_src/$ colcon build --parallel-workers 20 --event-handlers co
 Install nav2 & slamtoolbox
 
 ubuntu@ubuntu-desktop:~/ros_src/src$  git clone https://github.com/ros-planning/navigation2.git nav2 -b galactic
-ubuntu@ubuntu-desktop:~/ros_src/src$  rm -rf ./src/nav2/nav2_system_tests
+#ubuntu@ubuntu-desktop:~/ros_src/src$  rm -rf ./src/nav2/nav2_system_tests
+
+# https://gazebosim.org/api/gazebo/6.1/install.html
+# https://gazebosim.org/docs/garden/install_ubuntu_src
+wget https://raw.githubusercontent.com/ignition-tooling/gazebodistro/master/collection-citadel.yaml
+vcs import < collection-citadel.yaml
+ubuntu@ubuntu-desktop:~/ros_src$ colcon build --parallel-workers 20 --event-handlers console_direct+ --packages-skip-build-finished --cmake-args -DBUILD_TESTING=OFF
 
 ubuntu@ubuntu-desktop:~/ros_src/src$  git clone https://github.com/SteveMacenski/slam_toolbox.git -b galactic
 #ubuntu@ubuntu-desktop:~/ros_src/src$ git clone https://github.com/ros/bond_core.git -b galactic 
